@@ -7,7 +7,7 @@
                  [cirru/boot-cirru-sepal    "0.1.8"       :scope "test"]
                  [adzerk/boot-test          "1.1.1"       :scope "test"]
                  [mvc-works/hsl             "0.1.2"]
-                 [mvc-works/respo           "0.3.2"]])
+                 [mvc-works/respo           "0.3.3"]])
 
 (require '[adzerk.boot-cljs   :refer [cljs]]
          '[adzerk.boot-reload :refer [reload]]

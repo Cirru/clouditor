@@ -8,6 +8,7 @@ Clouditor
 
 Editor of functions, with features:
 
+- [ ] expression editor
 - [ ] navigate by call stack
 - [ ] simple dependency detection
 - [ ] run as an interpreter

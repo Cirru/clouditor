@@ -2,9 +2,10 @@
 (ns clouditor.core
   (:require [respo.core :refer [render! clear-cache!]]
             [clouditor.component.container :refer [comp-container]]
-            [cljs.reader :refer [read-string]]))
+            [cljs.reader :refer [read-string]]
+            [clouditor.schema :as schema]))
 
-(defonce store-ref (atom {}))
+(defonce store-ref (atom schema/store))
 
 (defonce states-ref (atom {}))
 
