@@ -1,10 +1,10 @@
 {
-  "short_name": "MVC Works",
-  "name": "MVC Works",
+  "short_name": "Clouditor",
+  "name": "Clouditor",
   "icons": [
     {
-      "src": "mvc-works-192x192.png",
-      "sizes": "192x192"
+      "src": "repo.cirru.org/logo.cirru.org/cirru-400x400.png",
+      "sizes": "400x400"
     }
   ],
   "start_url": "index.html",

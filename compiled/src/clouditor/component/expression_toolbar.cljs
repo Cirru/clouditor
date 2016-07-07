@@ -10,13 +10,13 @@
 
 (defn on-prepend [e dispatch! mutate!] (dispatch! :tree/prepend nil))
 
-(defn on-append [e dispatch! mutate!] (dispatch! ":tree/append" nil))
+(defn on-append [e dispatch! mutate!] (dispatch! :tree/append nil))
 
-(defn on-rm [e dispatch! mutate!] (dispatch! ":tree/rm" nil))
+(defn on-rm [e dispatch! mutate!] (dispatch! :tree/rm nil))
 
-(defn on-fold [e dispatch! mutate!] (dispatch! ":tree/fold" nil))
+(defn on-fold [e dispatch! mutate!] (dispatch! :tree/fold nil))
 
-(defn on-unfold [e dispatch! mutate!] (dispatch! ":tree/unfold" nil))
+(defn on-unfold [e dispatch! mutate!] (dispatch! :tree/unfold nil))
 
 (defn render []
   (fn [state mutate!]
@@ -28,7 +28,7 @@
       (comp-space 8 nil)
       (div
         {:style widget/tool-button, :event {:click on-append}}
-        (comp-text "apppend" nil))
+        (comp-text "append" nil))
       (comp-space 8 nil)
       (div
         {:style widget/tool-button, :event {:click on-rm}}

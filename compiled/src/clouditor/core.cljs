@@ -4,13 +4,15 @@
             [clouditor.component.container :refer [comp-container]]
             [cljs.reader :refer [read-string]]
             [clouditor.schema :as schema]
-            [clouditor.updater.core :refer [updater]]))
+            [clouditor.updater.core :refer [updater]]
+            [devtools.core :as devtools]))
 
 (defonce store-ref (atom schema/store))
 
 (defonce states-ref (atom {}))
 
 (defn dispatch! [op op-data]
+  (println "dispatching:" op op-data)
   (let [new-store (updater @store-ref op op-data)]
     (reset! store-ref new-store)))
 
@@ -20,6 +22,7 @@
 
 (defn -main []
   (enable-console-print!)
+  (devtools/install!)
   (render-app!)
   (add-watch store-ref :changes render-app!)
   (add-watch states-ref :changes render-app!)

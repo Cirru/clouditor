@@ -17,5 +17,9 @@
                   tree/fold
                   :tree/unfold
                   tree/unfold
+                  :tree/modify
+                  tree/modify
+                  :tree/focus
+                  tree/focus
                   identity-updater)]
-    ))
+    (handler store op-data)))

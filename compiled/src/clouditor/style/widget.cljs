@@ -30,3 +30,12 @@
   :background-color (hsl 200 80 70),
   :padding "0 4px",
   :font-family "Helvetica"})
+
+(def token
+ {:line-height 2,
+  :font-size "14px",
+  :padding "0 4px",
+  :border "none",
+  :font-family "Source Code Pro"})
+
+(def token-box {:display "inline-block"})

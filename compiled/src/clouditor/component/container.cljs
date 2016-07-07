@@ -5,7 +5,8 @@
             [clouditor.component.summary :refer [comp-summary]]
             [clouditor.component.editor :refer [comp-editor]]
             [clouditor.style.layout :as layout]
-            [clouditor.style.devtool :as devtool]))
+            [clouditor.style.devtool :as devtool]
+            [respo.component.debug :refer [comp-debug]]))
 
 (defn render [store]
   (fn [state mutate!]
@@ -15,6 +16,9 @@
       (div
         {:style (merge layout/fullscreen layout/row)}
         (comp-summary stack (:pointer router))
-        (comp-editor (get-in modules (get stack (:pointer router))))))))
+        (comp-editor
+          (get modules (get stack (:pointer router)))
+          (:coord router))
+        (comp-debug store {:bottom 0})))))
 
 (def comp-container (create-comp :container render))

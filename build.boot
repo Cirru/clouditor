@@ -7,7 +7,8 @@
                  [cirru/boot-cirru-sepal    "0.1.8"       :scope "test"]
                  [adzerk/boot-test          "1.1.1"       :scope "test"]
                  [mvc-works/hsl             "0.1.2"]
-                 [mvc-works/respo           "0.3.3"]])
+                 [mvc-works/respo           "0.3.3"]
+                 [binaryage/devtools        "0.7.2"]])
 
 (require '[adzerk.boot-cljs   :refer [cljs]]
          '[adzerk.boot-reload :refer [reload]]
@@ -22,7 +23,7 @@
 (task-options!
   pom {:project     'cirru/clouditor
        :version     +version+
-       :description "Workflow"
+       :description "Clouditor"
        :url         "https://github.com/Cirru/clouditor"
        :scm         {:url "https://github.com/Cirru/clouditor"}
        :license     {"MIT" "http://opensource.org/licenses/mit-license.php"}})
@@ -39,8 +40,8 @@
   (make-html
     (html {}
     (head {}
-      (title (use-text "Boot Workflow"))
-      (link {:attrs {:rel "icon" :type "image/png" :href "mvc-works-192x192.png"}})
+      (title (use-text "Clouditor"))
+      (link {:attrs {:rel "icon" :type "image/png" :href "repo.cirru.org/logo.cirru.org/cirru-400x400.png"}})
       (if (:build? data)
         (link (:attrs {:rel "manifest" :href "manifest.json"})))
       (meta'{:attrs {:charset "utf-8"}})
