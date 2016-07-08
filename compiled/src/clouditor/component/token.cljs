@@ -7,7 +7,7 @@
             [clouditor.component.token-toolbar :refer [comp-token-toolbar]]))
 
 (defn on-modify [e dispatch! mutate!]
-  (dispatch! :tree/modify (:value e)))
+  (dispatch! :tree/token-modify (:value e)))
 
 (defn on-focus [coord]
   (fn [e dispatch! mutate!]
@@ -16,12 +16,13 @@
 
 (defn render [token coord focused]
   (fn [state mutate!]
-    (let [w (+ 12 (text-width token 14 "Source Code Pro"))]
+    (let [w (+ 12 (text-width token 14 "Menlo,monospace"))]
       (div
         {:style widget/token-box}
         (input
           {:style (merge widget/token {:width (str w "px")}),
-           :event {:click (on-focus coord), :input on-modify}})
+           :event {:click (on-focus coord), :input on-modify},
+           :attrs {:value token}})
         (if (= coord focused) (comp-token-toolbar))))))
 
 (def comp-token (create-comp :token render))

@@ -8,15 +8,20 @@
 
 (declare comp-expression)
 
-(defn on-prepend [e dispatch! mutate!] (dispatch! :tree/prepend nil))
+(defn on-prepend [e dispatch! mutate!]
+  (dispatch! :tree/expr-prepend nil))
 
-(defn on-append [e dispatch! mutate!] (dispatch! :tree/append nil))
+(defn on-append [e dispatch! mutate!] (dispatch! :tree/expr-append nil))
+
+(defn on-before [e dispatch! mutate!] (dispatch! :tree/before nil))
+
+(defn on-after [e dispatch! mutate!] (dispatch! :tree/after nil))
 
 (defn on-rm [e dispatch! mutate!] (dispatch! :tree/rm nil))
 
 (defn on-fold [e dispatch! mutate!] (dispatch! :tree/fold nil))
 
-(defn on-unfold [e dispatch! mutate!] (dispatch! :tree/unfold nil))
+(defn on-unfold [e dispatch! mutate!] (dispatch! :tree/expr-unfold nil))
 
 (defn render []
   (fn [state mutate!]
@@ -29,6 +34,14 @@
       (div
         {:style widget/tool-button, :event {:click on-append}}
         (comp-text "append" nil))
+      (comp-space 8 nil)
+      (div
+        {:style widget/tool-button, :event {:click on-before}}
+        (comp-text "before" nil))
+      (comp-space 8 nil)
+      (div
+        {:style widget/tool-button, :event {:click on-after}}
+        (comp-text "afrter" nil))
       (comp-space 8 nil)
       (div
         {:style widget/tool-button, :event {:click on-rm}}

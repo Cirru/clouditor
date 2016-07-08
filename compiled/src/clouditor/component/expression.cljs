@@ -16,7 +16,7 @@
 (defn render [expression coord focused]
   (fn [state mutate!]
     (div
-      {:style widget/expression}
+      {:style widget/expression-box}
       (div
         {:style widget/expression,
          :event {:click (on-focus coord)},

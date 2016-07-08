@@ -5,5 +5,4 @@
 
 (defn text-width [content font-size font-family]
   (set! (.-font ctx) (str font-size "px " font-family))
-  (println (.-font ctx))
   (.-width (.measureText ctx content)))

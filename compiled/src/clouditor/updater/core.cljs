@@ -7,18 +7,22 @@
 (defn updater [store op op-data]
   (let [handler (case
                   op
-                  :tree/append
-                  tree/append
-                  :tree/prepend
-                  tree/prepend
+                  :tree/expr-append
+                  tree/expr-append
+                  :tree/expr-prepend
+                  tree/expr-prepend
+                  :tree/after
+                  tree/after
+                  :tree/before
+                  tree/before
                   :tree/rm
                   tree/rm
                   :tree/fold
                   tree/fold
-                  :tree/unfold
-                  tree/unfold
-                  :tree/modify
-                  tree/modify
+                  :tree/expr-unfold
+                  tree/expr-unfold
+                  :tree/token-modify
+                  tree/token-modify
                   :tree/focus
                   tree/focus
                   identity-updater)]
