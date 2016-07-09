@@ -15,6 +15,6 @@
         (div {:style widget/button} (comp-text "Save" nil)))
       (div
         {:style layout/container}
-        (comp-expression (or tree []) [] focused)))))
+        (comp-expression (or tree []) [] focused false)))))
 
 (def comp-editor (create-comp :editor render))

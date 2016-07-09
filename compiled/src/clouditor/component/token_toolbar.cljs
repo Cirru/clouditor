@@ -14,24 +14,34 @@
 
 (defn on-fold [e dispatch! mutate!] (dispatch! :tree/fold nil))
 
-(defn render []
+(defn on-define [token]
+  (fn [e dispatch! mutate!] (dispatch! :stack/define token)))
+
+(defn render [token]
   (fn [state mutate!]
-    (div
-      {:style (merge layout/row widget/float-toolbar)}
+    (let [has-ns? (clojure.string/includes? token "/")]
       (div
-        {:style widget/tool-button, :event {:click on-rm}}
-        (comp-text "rm" nil))
-      (comp-space 8 nil)
-      (div
-        {:style widget/tool-button, :event {:click on-after}}
-        (comp-text "after" nil))
-      (comp-space 8 nil)
-      (div
-        {:style widget/tool-button, :event {:click on-before}}
-        (comp-text "before" nil))
-      (comp-space 8 nil)
-      (div
-        {:style widget/tool-button, :event {:click on-fold}}
-        (comp-text "fold" nil)))))
+        {:style (merge layout/row widget/float-toolbar)}
+        (div
+          {:style widget/tool-button, :event {:click on-rm}}
+          (comp-text "rm" nil))
+        (comp-space 8 nil)
+        (div
+          {:style widget/tool-button, :event {:click on-after}}
+          (comp-text "after" nil))
+        (comp-space 8 nil)
+        (div
+          {:style widget/tool-button, :event {:click on-before}}
+          (comp-text "before" nil))
+        (comp-space 8 nil)
+        (div
+          {:style widget/tool-button, :event {:click on-fold}}
+          (comp-text "fold" nil))
+        (if has-ns? (comp-space 8 nil))
+        (if has-ns?
+          (div
+            {:style widget/tool-button,
+             :event {:click (on-define token)}}
+            (comp-text "define" nil)))))))
 
 (def comp-token-toolbar (create-comp :token-toolbar render))

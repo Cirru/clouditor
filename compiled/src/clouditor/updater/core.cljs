@@ -1,6 +1,8 @@
 
 (ns clouditor.updater.core
-  (:require [clouditor.updater.tree :as tree]))
+  (:require [clouditor.updater.tree :as tree]
+            [clouditor.updater.stack :as stack]
+            [clouditor.updater.router :as router]))
 
 (defn identity-updater [store op-data] store)
 
@@ -25,5 +27,11 @@
                   tree/token-modify
                   :tree/focus
                   tree/focus
+                  :stack/define
+                  stack/define
+                  :router/point
+                  router/point
+                  :router/page
+                  router/page
                   identity-updater)]
     (handler store op-data)))

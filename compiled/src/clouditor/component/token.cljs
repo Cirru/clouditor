@@ -23,6 +23,6 @@
           {:style (merge widget/token {:width (str w "px")}),
            :event {:click (on-focus coord), :input on-modify},
            :attrs {:value token}})
-        (if (= coord focused) (comp-token-toolbar))))))
+        (if (= coord focused) (comp-token-toolbar token))))))
 
 (def comp-token (create-comp :token render))

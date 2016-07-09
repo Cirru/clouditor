@@ -2,6 +2,6 @@
 (ns clouditor.schema)
 
 (def store
- {:router {:coord [], :pointer 0},
+ {:router {:coord [], :page :editor, :pointer 0},
   :modules {},
   :stack ["clouditor/main"]})

@@ -41,7 +41,7 @@
       (comp-space 8 nil)
       (div
         {:style widget/tool-button, :event {:click on-after}}
-        (comp-text "afrter" nil))
+        (comp-text "after" nil))
       (comp-space 8 nil)
       (div
         {:style widget/tool-button, :event {:click on-rm}}

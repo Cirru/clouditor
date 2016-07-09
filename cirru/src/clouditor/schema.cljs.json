@@ -1,1 +1,1 @@
-[["ns","clouditor.schema"],["def","store",["{}",[":stack",["[]","|clouditor/main"]],[":modules",["{}"]],[":router",["{}",[":pointer","0"],[":coord",["[]"]]]]]]]
+[["ns","clouditor.schema"],["def","store",["{}",[":stack",["[]","|clouditor/main"]],[":modules",["{}"]],[":router",["{}",[":pointer","0"],[":coord",["[]"]],[":page",":editor"]]]]]]
