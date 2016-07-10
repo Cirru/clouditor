@@ -5,9 +5,15 @@
             [cljs.reader :refer [read-string]]
             [clouditor.schema :as schema]
             [clouditor.updater.core :refer [updater]]
-            [devtools.core :as devtools]))
+            [devtools.core :as devtools]
+            [cljs.reader :as reader]))
 
-(defonce store-ref (atom schema/store))
+(defonce store-ref
+ (let [raw-data (.getItem js/localStorage "clouditor")
+       maybe-store (if (some? raw-data)
+                     (reader/read-string raw-data)
+                     nil)]
+   (atom (merge schema/store maybe-store))))
 
 (defonce states-ref (atom {}))
 
@@ -38,6 +44,11 @@
        (.catch (fn [error] (println "failed:" error)))))))
 
 (set! js/window.onload -main)
+
+(defn persist-store! []
+  (.setItem js/localStorage "clouditor" (pr-str @store-ref)))
+
+(set! js/window.onbeforeunload persist-store!)
 
 (defn on-jsload []
   (clear-cache!)

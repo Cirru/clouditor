@@ -3,39 +3,38 @@
   (:require (hsl.core :refer [hsl])
             [respo.alias :refer [create-comp div]]
             [respo.component.text :refer [comp-text]]
+            [respo.component.space :refer [comp-space]]
             [respo.component.debug :refer [comp-debug]]
             [clouditor.style.layout :as layout]
-            [clouditor.style.widget :as widget]))
+            [clouditor.style.widget :as widget]
+            [clouditor.component.overview :refer [comp-overview]]
+            [clouditor.component.tabs :refer [comp-tabs]]
+            [clouditor.component.interpreter :refer [comp-interpreter]]))
 
-(defn init-state [modules] :overview)
+(def tabs ["Overview" "Interpreter"])
+
+(defn init-state [modules] (first tabs))
 
 (defn update-state [state new-tab] new-tab)
 
-(defn active-style [active?]
-  (if active? {:background-color (hsl 200 80 70)}))
-
-(defn on-select [tab] (fn [e dispatch! mutate!] (mutate! tab)))
+(defn on-select [mutate-this!] (fn [tab] (mutate-this! tab)))
 
 (defn render [modules]
   (fn [state mutate!]
     (div
-      {}
+      {:style layout/flex}
+      (comp-tabs tabs state (on-select mutate!))
+      (comp-space nil 32)
       (div
-        {:style widget/tab-list}
-        (div
-          {:style
-           (merge widget/tab (active-style (= state :overview))),
-           :event {:click (on-select :overview)}}
-          (comp-text "Overview" nil))
-        (div
-          {:style
-           (merge widget/tab (active-style (= state :dependency))),
-           :event {:click (on-select :dependency)}}
-          (comp-text "Dependency" nil))
-        (div
-          {:style (merge widget/tab (active-style (= state :unused))),
-           :event {:click (on-select :unused)}}
-          (comp-text "Unused" nil))))))
+        {:style widget/container}
+        (case
+          state
+          "Overview"
+          (comp-overview modules)
+          "Interpreter"
+          (comp-interpreter modules)
+          nil))
+      (comment comp-debug modules nil))))
 
 (def comp-analysis
  (create-comp :analysis init-state update-state render))

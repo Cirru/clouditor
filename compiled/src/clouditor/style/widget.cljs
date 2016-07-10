@@ -7,6 +7,7 @@
  {:line-height 2,
   :color (hsl 0 0 100),
   :background-color (hsl 200 70 70),
+  :cursor "pointer",
   :padding "0 8px"})
 
 (def expression
@@ -73,3 +74,36 @@
   :background-color (hsl 200 80 80),
   :width "200px",
   :cursor "pointer"})
+
+(def data-row {:height "40px"})
+
+(def module-name
+ {:color (hsl 0 0 100),
+  :background-color (hsl 0 80 50),
+  :padding "0 8px",
+  :font-family "Menlo,monospace"})
+
+(def code {:font-family "Menlo,monospace"})
+
+(def codebox
+ {:line-height 2,
+  :font-size "14px",
+  :background-color (hsl 0 0 94),
+  :width "100%",
+  :padding "8px",
+  :outline "none",
+  :border "none",
+  :font-family "Menlo,monospace",
+  :height "240px"})
+
+(def container {:padding "16px"})
+
+(def module-link
+ {:line-height 2,
+  :background-color (hsl 0 0 80),
+  :padding "0 8px",
+  :display "inline-block",
+  :margin-right 8,
+  :border-radius "4px",
+  :margin-bottom 8,
+  :font-family "Menlo,monospace"})
