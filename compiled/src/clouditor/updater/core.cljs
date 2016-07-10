@@ -27,8 +27,14 @@
                   tree/token-modify
                   :tree/focus
                   tree/focus
+                  :tree/reset
+                  tree/reset
                   :stack/define
                   stack/define
+                  :stack/display
+                  stack/display
+                  :stack/display-stack
+                  stack/display-stack
                   :router/point
                   router/point
                   :router/page

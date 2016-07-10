@@ -160,3 +160,8 @@
        (fn [tree] (assoc-in tree coord op-data))))))
 
 (defn focus [store op-data] (assoc-in store [:router :coord] op-data))
+
+(defn reset [store op-data]
+  (let [module-name (get-module-name store)]
+    (-> store
+     (update :modules (fn [modules] (dissoc modules module-name))))))

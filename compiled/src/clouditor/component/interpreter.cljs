@@ -4,9 +4,11 @@
             [respo.component.text :refer [comp-text]]
             [respo.component.space :refer [comp-space]]
             [clouditor.style.layout :as layout]
+            [clouditor.style.typeset :as typeset]
             [clouditor.style.widget :as widget]
             [clouditor.util.compiler :refer [find-dependencies
-                                             build-deps build-graph]]))
+                                             build-graph
+                                             generate-code]]))
 
 (defn init-state [modules] [])
 
@@ -14,12 +16,13 @@
 
 (defn on-compile [modules]
   (fn [e dispatch! mutate!]
-    (let [] (println "Compile..." (build-graph modules)))))
+    (let [generated (generate-code modules)] (mutate! generated))))
 
 (defn render [modules]
   (fn [state mutate!]
     (div
       {}
+      (div {:style typeset/section-title} (comp-text "AST" nil))
       (textarea
         {:style widget/codebox,
          :attrs

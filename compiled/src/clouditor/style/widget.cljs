@@ -75,16 +75,6 @@
   :width "200px",
   :cursor "pointer"})
 
-(def data-row {:height "40px"})
-
-(def module-name
- {:color (hsl 0 0 100),
-  :background-color (hsl 0 80 50),
-  :padding "0 8px",
-  :font-family "Menlo,monospace"})
-
-(def code {:font-family "Menlo,monospace"})
-
 (def codebox
  {:line-height 2,
   :font-size "14px",
@@ -96,14 +86,21 @@
   :font-family "Menlo,monospace",
   :height "240px"})
 
-(def container {:padding "16px"})
-
 (def module-link
  {:line-height 2,
+  :color (hsl 0 0 100),
+  :font-size "14px",
   :background-color (hsl 0 0 80),
+  :cursor "pointer",
   :padding "0 8px",
   :display "inline-block",
   :margin-right 8,
   :border-radius "4px",
-  :margin-bottom 8,
+  :margin-bottom 4,
   :font-family "Menlo,monospace"})
+
+(def graph-hinter
+ {:padding "4px 4px 0 4px",
+  :margin-right "8px",
+  :border-top (str "2px solid " (hsl 0 0 50)),
+  :border-radius "8px"})

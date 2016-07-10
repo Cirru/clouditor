@@ -6,13 +6,17 @@
             [respo.component.text :refer [comp-text]]
             [clouditor.component.expression :refer [comp-expression]]))
 
+(defn on-reset [e dispatch! mutate!] (dispatch! :tree/reset nil))
+
 (defn render [tree focused]
   (fn [state mutate!]
     (div
       {:style layout/flex}
       (div
         {:style layout/toolbar}
-        (div {:style widget/button} (comp-text "Save" nil)))
+        (div
+          {:style widget/button, :event {:click on-reset}}
+          (comp-text "Reset" nil)))
       (div
         {:style layout/container}
         (comp-expression (or tree []) [] focused false)))))

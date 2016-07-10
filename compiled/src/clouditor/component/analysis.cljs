@@ -7,6 +7,7 @@
             [respo.component.debug :refer [comp-debug]]
             [clouditor.style.layout :as layout]
             [clouditor.style.widget :as widget]
+            [clouditor.style.typeset :as typeset]
             [clouditor.component.overview :refer [comp-overview]]
             [clouditor.component.tabs :refer [comp-tabs]]
             [clouditor.component.interpreter :refer [comp-interpreter]]))
@@ -22,11 +23,11 @@
 (defn render [modules]
   (fn [state mutate!]
     (div
-      {:style layout/flex}
+      {:style (merge layout/flex layout/container)}
       (comp-tabs tabs state (on-select mutate!))
-      (comp-space nil 32)
+      (comp-space nil 24)
       (div
-        {:style widget/container}
+        {}
         (case
           state
           "Overview"

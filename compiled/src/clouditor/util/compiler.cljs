@@ -1,6 +1,6 @@
 
 (ns clouditor.util.compiler
-  (:require [clojure.string :as string]))
+  (:require [clojure.string :as string] [clojure.set :as set]))
 
 (defn find-dependencies [tree]
   (->>
@@ -41,3 +41,26 @@
         deps-tree (build-deps modules)
         tree (expand-graph main-module deps-tree)]
     (assoc {} main-module tree)))
+
+(defn convert-vectors [graph]
+  (->>
+    graph
+    (map (fn [entry] [(convert-vectors (val entry)) (key entry)]))
+    (into [])))
+
+(defn generate-code [modules]
+  (let [graph (build-graph modules)
+        modules-in-order (distinct (flatten (convert-vectors graph)))]
+    (->>
+      modules-in-order
+      (map (fn [module-name] [module-name (get modules module-name)]))
+      (into []))))
+
+(defn get-unused-names [modules]
+  (let [graph (build-graph modules)
+        modules-in-order (into
+                           (hash-set)
+                           (flatten (convert-vectors graph)))
+        all-modules (into (hash-set) (keys modules))]
+    (println all-modules modules-in-order)
+    (set/difference all-modules modules-in-order)))

@@ -13,3 +13,15 @@
            (let [pointer (get-in store [:router :pointer])]
              (conj (subvec stack 0 (inc pointer)) op-data))))
        (update-in [:router :pointer] inc)))))
+
+(defn display [store op-data]
+  (-> store
+   (assoc :stack [op-data])
+   (assoc-in [:router :pointer] 0)
+   (assoc-in [:router :page] :editor)))
+
+(defn display-stack [store op-data]
+  (-> store
+   (assoc :stack op-data)
+   (assoc-in [:router :pointer] (dec (count op-data)))
+   (assoc-in [:router :page] :editor)))

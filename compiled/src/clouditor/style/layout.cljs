@@ -26,4 +26,4 @@
   :display "flex",
   :flex-direction "row"})
 
-(def container {:padding "8px"})
+(def container {:padding "16px"})
