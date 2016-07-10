@@ -1,6 +1,8 @@
 
 (ns clouditor.util.compiler
-  (:require [clojure.string :as string] [clojure.set :as set]))
+  (:require [clojure.string :as string]
+            [clojure.set :as set]
+            [cljs.reader :refer [read-string]]))
 
 (defn find-dependencies [tree]
   (->>
@@ -64,3 +66,22 @@
         all-modules (into (hash-set) (keys modules))]
     (println all-modules modules-in-order)
     (set/difference all-modules modules-in-order)))
+
+(defn eval-expr [env expr]
+  (if (string? expr)
+    (cond
+      (some? (re-find (re-pattern "^\\\\d+$") expr)) (read-string expr)
+      (= expr "true") true
+      (= expr "false") false
+      :else (js/Error. "Not recognized!"))
+    (js/Error. "Not implemented yet!")))
+
+(defn evaluate [env ops]
+  (if (empty? ops)
+    env
+    (let [cursor (first ops)
+          module-name (first cursor)
+          expression (last cursor)
+          op-name (first expression)
+          op-args (rest expression)]
+      (js/Error. "Not implemented yet!"))))

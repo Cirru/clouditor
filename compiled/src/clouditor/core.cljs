@@ -43,12 +43,12 @@
            (println "resigtered:" registration.scope)))
        (.catch (fn [error] (println "failed:" error)))))))
 
-(set! js/window.onload -main)
+(set! (.-onload js/window) -main)
 
 (defn persist-store! []
   (.setItem js/localStorage "clouditor" (pr-str @store-ref)))
 
-(set! js/window.onbeforeunload persist-store!)
+(set! (.-onbeforeunload js/window) persist-store!)
 
 (defn on-jsload []
   (clear-cache!)

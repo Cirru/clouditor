@@ -10,13 +10,8 @@
                                              build-graph
                                              generate-code]]))
 
-(defn init-state [modules] [])
-
-(defn update-state [state new-code] new-code)
-
-(defn on-compile [modules]
-  (fn [e dispatch! mutate!]
-    (let [generated (generate-code modules)] (mutate! generated))))
+(defn on-run [e dispatch! mutate!]
+  (js/alert "Interpreter is not implemented yet!"))
 
 (defn render [modules]
   (fn [state mutate!]
@@ -27,14 +22,11 @@
         {:style widget/codebox,
          :attrs
          {:placeholder "Click button to generate code!",
-          :value (pr-str state)}})
+          :value (generate-code modules)}})
       (div
         {:style layout/toolbar}
         (div
-          {:style widget/button, :event {:click (on-compile modules)}}
-          (comp-text "Generate Code" nil))
-        (comp-space 8 nil)
-        (div {:style widget/button} (comp-text "Run" nil))))))
+          {:style widget/button, :event {:click on-run}}
+          (comp-text "Run" nil))))))
 
-(def comp-interpreter
- (create-comp :interpreter init-state update-state render))
+(def comp-interpreter (create-comp :interpreter render))

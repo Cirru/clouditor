@@ -22,7 +22,7 @@
                         (merge
                           widget/tab
                           (if (= tab current-tab)
-                            {:background-color (hsl 200 80 84)}
+                            {:background-color (hsl 200 80 70)}
                             nil)),
                         :event {:click (handle-select tab on-select)}}
                        (comp-text tab nil))]))))))

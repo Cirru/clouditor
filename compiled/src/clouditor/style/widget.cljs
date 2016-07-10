@@ -71,7 +71,7 @@
  {:line-height 2,
   :color (hsl 0 0 100),
   :text-align "center",
-  :background-color (hsl 200 80 80),
+  :background-color (hsl 200 50 90),
   :width "200px",
   :cursor "pointer"})
 
